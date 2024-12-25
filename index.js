@@ -77,7 +77,13 @@ userRouter.post('/users/:uid/exercises', (req, res)=>{
           console.error(err);
           return res.json({error: "Create exercise error"});
         }
-        return res.json(exercise);
+        return res.json({
+          _id: uid,
+          username: user.username,
+          description: description,
+          duration: parseInt(duration),
+          date: date.toDateString(),
+        });
       });
     });
 });
